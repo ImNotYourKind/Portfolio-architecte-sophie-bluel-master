@@ -1,28 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const gallery = document.querySelector('.gallery');
-    const filterButtons = document.querySelectorAll('.filter-button');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const filter = button.getAttribute('data-filter');
-
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-
-            const items = gallery.querySelectorAll('figure');
-            items.forEach(item => {
-                if (filter === 'all' || item.classList.contains(filter)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-    });
-
     const filterContainer = document.querySelector('.filter-container');
 
-    // Fonction pour créer un bouton de filtre
     const createFilterButton = (id, name) => {
         const button = document.createElement('button');
         button.type = 'button';
@@ -32,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return button;
     };
 
-    // Ajouter le bouton "Tous"
     filterContainer.appendChild(createFilterButton('all', 'Tous'));
 
     fetch('http://localhost:5678/api/works')
@@ -45,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const categoryId = image.category.id;
                     const categoryName = image.category.name;
 
-                    // Ajouter la catégorie au dictionnaire si elle n'existe pas encore
                     if (!categories[categoryId]) {
                         categories[categoryId] = categoryName;
                         filterContainer.appendChild(createFilterButton(categoryId, categoryName));
@@ -66,26 +43,54 @@ document.addEventListener('DOMContentLoaded', () => {
                     gallery.appendChild(figure);
                 });
 
-                // Ajouter les écouteurs d'événements pour les boutons de filtre
-                const filterButtons = document.querySelectorAll('.filter-button');
-                filterButtons.forEach(button => {
+                document.querySelectorAll('.filter-button').forEach(button => {
                     button.addEventListener('click', () => {
                         const filter = button.getAttribute('data-filter');
-
-                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
                         button.classList.add('active');
 
-                        const items = gallery.querySelectorAll('figure');
-                        items.forEach(item => {
-                            if (filter === 'all' || item.classList.contains(`category-${filter}`)) {
-                                item.style.display = 'block';
-                            } else {
-                                item.style.display = 'none';
-                            }
+                        gallery.querySelectorAll('figure').forEach(item => {
+                            item.style.display = (filter === 'all' || item.classList.contains(`category-${filter}`)) ? 'block' : 'none';
                         });
                     });
                 });
             }
         })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         .catch(error => console.error('Erreur:', error));
+        
+    const loginBtn = document.getElementById('');
+    const loginForm = document.getElementById('');
+
+    loginBtn.addEventListener('click', () => {
+        loginPopup.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', () => {
+        loginPopup.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === loginPopup) {
+            loginPopup.style.display = 'none';
+        }
+    });
 });
+
+
