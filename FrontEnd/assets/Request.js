@@ -56,41 +56,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         .catch(error => console.error('Erreur:', error));
-        
-    const loginBtn = document.getElementById('');
-    const loginForm = document.getElementById('');
-
-    loginBtn.addEventListener('click', () => {
-        loginPopup.style.display = 'block';
-    });
-
-    closeBtn.addEventListener('click', () => {
-        loginPopup.style.display = 'none';
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target === loginPopup) {
-            loginPopup.style.display = 'none';
-        }
-    });
 });
-
-

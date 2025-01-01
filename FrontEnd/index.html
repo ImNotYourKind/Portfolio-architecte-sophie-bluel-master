@@ -11,6 +11,7 @@
 		rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -20,7 +21,7 @@
 			<ul>
 				<li>projets</li>
 				<li>contact</li>
-				<li id="loginBtn"> <a href="login.html">Login</a></li>
+				<li id="loginBtn"> <a href="Login.html">Login</a></li>
 				<li><img src="assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -42,10 +43,13 @@
 			</article>
 		</section>
 		<section id="portfolio">
-			<h2>Mes Projets</h2>
+			<div class="portfolio-header">
+				<h2>Mes Projets</h2>
+				<button id="editBtn" style="display: none;">Modifier</button>
+			</div>
 			<div class="filter-container">
 				<!--
-	     Boutons filtres
+		 Boutons filtres
 		-->
 			</div>
 			<div class="gallery">
@@ -77,7 +81,38 @@
 		</nav>
 	</footer>
 
+	<!-- Modale pour gérer les photos -->
+	<div id="photoModal" class="modal" style="display: none;">
+		<div class="modal-content">
+			<span class="close-modal">&times;</span>
+			<h2>Gallerie photo</h2>
+			<div id="photoGallery">
+				<!-- Les photos seront chargées ici -->
+			</div>
+			<button id="addPhotoBtn">Ajouter une photo</button>
+		</div>
+		<!-- Nouvelle section pour ajouter une photo -->
+		<div id="addPhotoSection" class="modal-content" style="display: none;">
+			<span class="back-btn">&larr;</span>
+			<h2>Ajout photo</h2>
+			<form id="addPhotoForm">
+				<label for="photoFile"></label>
+				<input type="file" id="photoFile" name="image" accept="image/*" required>
+				<label for="photoTitle">Titre</label>
+				<input type="text" id="photoTitle" name="title" required>
+				<label for="photoCategory">Catégorie</label>
+				<select id="photoCategory" name="category" required>
+					<option value="1">Objets</option>
+					<option value="2">Appartements</option>
+					<option value="3">Hotels & Restaurants</option>
+				</select>
+				<button type="submit">Valider</button>
+			</form>
+		</div>
+	</div>
+
 	<script src="./assets/request.js"></script>
+	<script src="./assets/modal.js"></script>
 </body>
 
 </html>
