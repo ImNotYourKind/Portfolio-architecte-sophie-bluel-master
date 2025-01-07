@@ -18,9 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		.then(response => response.json())
 		.then(data => {
 			if (data.token) {
-				// Stocker le token dans le localStorage
+
 				localStorage.setItem('token', data.token);
-				// Rediriger vers la page d'accueil
+
 				window.location.href = 'index.html';
 			} else {
 				alert('Erreur dans l’identifiant ou le mot de passe.');
@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		})
 		.catch(error => {
 			console.error('Erreur:', error);
-			alert('Une erreur est survenue. Veuillez réessayer plus tard.');
 		});
 	});
 });

@@ -58,3 +58,20 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Erreur:', error));
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const authBtn = document.getElementById('authBtn');
+    const token = localStorage.getItem('token');
+    const editModeBar = document.getElementById('editModeBar');
+
+    if (token) {
+        authBtn.innerHTML = '<a href="#">Logout</a>';
+        authBtn.addEventListener('click', () => {
+            localStorage.removeItem('token');
+            window.location.reload();
+        });
+        editModeBar.style.display = 'flex';
+    } else {
+        authBtn.innerHTML = '<a href="Login.html">Login</a>';
+    }
+});

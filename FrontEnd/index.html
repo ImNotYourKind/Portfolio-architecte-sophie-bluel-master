@@ -15,13 +15,19 @@
 </head>
 
 <body>
+	
+	<div id="editModeBar" class="edit-mode-bar" style="display: none;">
+        <i class="fas fa-edit"></i>
+        <span>Mode édition</span>
+    </div>
+
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 		<nav>
 			<ul>
 				<li>projets</li>
 				<li>contact</li>
-				<li id="loginBtn"> <a href="Login.html">Login</a></li>
+				<li id="authBtn"> <a href="Login.html">Login</a></li>
 				<li><img src="assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -81,17 +87,17 @@
 		</nav>
 	</footer>
 
-	<!-- Modale pour gérer les photos -->
+
 	<div id="photoModal" class="modal" style="display: none;">
 		<div class="modal-content">
 			<span class="close-modal">&times;</span>
 			<h2>Gallerie photo</h2>
 			<div id="photoGallery">
-				<!-- Les photos seront chargées ici -->
+				<!-- photos modale -->
 			</div>
 			<button id="addPhotoBtn">Ajouter une photo</button>
 		</div>
-		<!-- Nouvelle section pour ajouter une photo -->
+
 		<div id="addPhotoSection" class="modal-content" style="display: none;">
 			<span class="back-btn">&larr;</span>
 			<h2>Ajout photo</h2>
