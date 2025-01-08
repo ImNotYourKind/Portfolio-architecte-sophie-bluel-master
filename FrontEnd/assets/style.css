@@ -189,6 +189,11 @@ nav li {
 	font-size: 1.2em;
 }
 
+.instaIcon img {
+    width: 20px;
+    height: 20px; 
+}
+
 li:hover {
 	color: #B1663C;
 	cursor: pointer;
@@ -197,6 +202,7 @@ li:hover {
 #introduction {
 	display: flex;
 	align-items: center;
+	margin-top: 120px;
 }
 
 #introduction figure {
@@ -224,6 +230,8 @@ li:hover {
 .filter-container {
 	margin-bottom: 20px;
 	text-align: center;
+margin-top: 40px;
+margin-bottom: 40px;
 }
 
 .filter-button {
@@ -247,6 +255,7 @@ li:hover {
 }
 
 .portfolio-header {
+	margin-top: 130px;
 	text-align: center;
 	margin-bottom: 30px;
 }
@@ -425,21 +434,20 @@ width: 100%;
 	top: 0;
 	width: 100%;
 	height: 100%;
-	overflow: auto;
 	background-color: rgba(0, 0, 0, 0.5);
 
 }
 
 .modal-content {
 	background-color: #fcfcfc;
-	margin: 15% auto;
-	padding: 20px;
+	margin: 8% auto;
+	padding: 20px 0px;
 	text-align: center;
 	border: 1px solid #888;
-	width: 80%;
-	max-width: 600px;
+	max-width: 630px;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 	border-radius: 10px;
+
 }
 
 .modal-content h2 {
@@ -449,8 +457,8 @@ width: 100%;
 }
 
 #addPhotoBtn {
-	margin-top: 35px;
-	margin-bottom: 30px;
+	margin-top: 20px;
+	margin-bottom: 25px;
 	padding: 10px 40px;
 	background-color: rgba(29, 97, 84, 1);
 	color: #ffffff;
@@ -459,13 +467,24 @@ width: 100%;
 
 }
 
+/* Trait gris décoratif */
+.decorative-line {
+	border: 1px;
+    width: 430px;
+    height: 1px;
+    background-color: rgba(179, 179, 179, 1);
+    margin: 20px auto; /* Centrer le trait horizontalement */
+	margin-top: 50px;
+}
+
 
 .close-modal {
 	color: #aaa;
-	float: right;
+float: right;
 	font-size: 28px;
 	font-weight: bold;
 	cursor: pointer;
+	padding-right: 25px;
 }
 
 .back-btn {
@@ -492,6 +511,15 @@ width: 100%;
 	margin-top: 20px;
 }
 
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+	max-width: 430px;
+	margin: auto;
+
+
+}
+
 .photo-item img {
 	height: 102px;
 	width: 76px;
@@ -500,20 +528,19 @@ width: 100%;
 	display: block;
 }
 
-.photo-item .delete-icon {
+.delete-icon {
 	position: absolute;
 	top: 5px;
 	right: 5px;
-	color: #f44336;
+	color: #ffffff;
 	cursor: pointer;
 	font-size: 16px;
 }
 
 .photo-item .delete-icon:hover {
-	color: #d32f2f;
+	color: #000000;
 }
 
-.photo-item button {}
 
 #addPhotoForm {
 	margin-top: 50px;

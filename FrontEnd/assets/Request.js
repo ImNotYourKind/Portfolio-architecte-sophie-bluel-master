@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return button;
     };
 
-    filterContainer.appendChild(createFilterButton('all', 'Tous'));
+    const allButton = createFilterButton('all', 'Tous');
+    allButton.classList.add('active'); // Ajouter la classe active au bouton "Tous"
+    filterContainer.appendChild(allButton);
 
     fetch('http://localhost:5678/api/works')
         .then(response => response.json())
@@ -63,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const authBtn = document.getElementById('authBtn');
     const token = localStorage.getItem('token');
     const editModeBar = document.getElementById('editModeBar');
+    const filterContainer = document.querySelector('.filter-container');
 
     if (token) {
         authBtn.innerHTML = '<a href="#">Logout</a>';
@@ -71,7 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.reload();
         });
         editModeBar.style.display = 'flex';
+        filterContainer.style.display = 'none'; // Cacher les filtres si connecté
     } else {
         authBtn.innerHTML = '<a href="Login.html">Login</a>';
+        filterContainer.style.display = 'block'; // Afficher les filtres si non connecté
     }
 });
