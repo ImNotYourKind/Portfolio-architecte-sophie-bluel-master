@@ -255,23 +255,24 @@ li:hover {
 }
 
 .portfolio-header {
-	margin-top: 130px;
-	margin-bottom: 30px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
+    margin-top: 130px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-
 #editBtn {
-	display: none;
-	font-size: 15px;
-	color: #000000;
-	cursor: pointer;
-	margin-left: 20px;
-	margin-right: 10px;
-	display: none;
+    display: none;
+    font-size: 15px;
+    color: #000000;
+    cursor: pointer;
+    position: absolute;
+    margin-left: 300px;
+}
+
+#editBtn span {
+    margin-left: 5px;
 }
 
 

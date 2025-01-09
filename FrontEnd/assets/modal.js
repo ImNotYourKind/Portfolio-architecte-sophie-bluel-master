@@ -10,30 +10,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainGallery = document.querySelector('.gallery');
     let photos = [];
 
-    // Afficher le bouton "Modifier" si l'utilisateur est connecté
-    if (localStorage.getItem('token')) {
-        editBtn.style.display = 'block';
-    }
 
-    // Afficher la modale lorsque le bouton "Modifier" est cliqué
+
+
     editBtn.addEventListener('click', () => {
         photoModal.style.display = 'block';
         loadPhotos();
     });
 
-    // Masquer la modale lorsque le bouton de fermeture est cliqué
+
     closeModal.addEventListener('click', () => {
         photoModal.style.display = 'none';
     });
 
-    // Masquer la modale lorsque l'utilisateur clique en dehors de la modale
+
     window.addEventListener('click', (event) => {
         if (event.target === photoModal) {
             photoModal.style.display = 'none';
         }
     });
 
-    // Charger les photos depuis le backend
+
     function loadPhotos() {
         fetch('http://localhost:5678/api/works')
             .then(response => response.json())
@@ -44,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Erreur:', error));
     }
 
-    // Mettre à jour les galeries principale et modale
+
     function updateGalleries() {
         photoGallery.innerHTML = '';
         mainGallery.innerHTML = '';
@@ -67,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             photoItem.appendChild(deleteIcon);
             photoGallery.appendChild(photoItem);
 
-            // Ajouter l'image à la galerie principale
+
             const mainFigure = document.createElement('figure');
             mainFigure.classList.add(`category-${image.category.id}`);
 
@@ -84,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Supprimer une photo
+
     function deletePhoto(photoId) {
         fetch(`http://localhost:5678/api/works/${photoId}`, {
             method: 'DELETE',
@@ -94,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(response => {
             if (response.ok) {
-                // Supprimer la photo localement
+
                 photos = photos.filter(photo => photo.id !== photoId);
                 updateGalleries();
             } else {
@@ -104,19 +101,19 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Erreur:', error));
     }
 
-    // Afficher le formulaire d'ajout de photo lorsque le bouton "Ajouter une photo" est cliqué
+
     addPhotoBtn.addEventListener('click', () => {
         document.querySelector('.modal-content').style.display = 'none';
         addPhotoSection.style.display = 'block';
     });
 
-    // Retourner à la galerie de photos lorsque le bouton "Retour" est cliqué
+
     backBtn.addEventListener('click', () => {
         addPhotoSection.style.display = 'none';
         document.querySelector('.modal-content').style.display = 'block';
     });
 
-    // Gérer la soumission du formulaire d'ajout de photo
+
     addPhotoForm.addEventListener('submit', (event) => {
         event.preventDefault();
 

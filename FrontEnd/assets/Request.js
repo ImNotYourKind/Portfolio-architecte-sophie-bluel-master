@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const allButton = createFilterButton('all', 'Tous');
-    allButton.classList.add('active'); // Ajouter la classe active au bouton "Tous"
+    allButton.classList.add('active');
     filterContainer.appendChild(allButton);
 
     const loadPhotos = () => {
@@ -86,11 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.reload();
         });
         editModeBar.style.display = 'flex';
-        filterContainer.style.display = 'none'; // Cacher les filtres si connecté
-        editBtn.style.display = 'flex'; // Afficher l'icône de modification et le texte si connecté
+        filterContainer.style.display = 'none';
+        editBtn.style.display = 'flex';
     } else {
         authBtn.innerHTML = '<a href="Login.html">Login</a>';
-        filterContainer.style.display = 'block'; // Afficher les filtres si non connecté
-        editBtn.style.display = 'none'; // Cacher l'icône de modification et le texte si non connecté
+        filterContainer.style.display = 'block';
+        editBtn.style.display = 'none';
     }
 });
