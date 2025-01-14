@@ -1,89 +1,19 @@
 /* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
+	v2.0 | 20110126
+	License: none (public domain)
 */
 
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td, article,
+aside, canvas, details, embed, figure, figcaption,
+footer, header, hgroup, menu, nav, output,
+ruby, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -93,38 +23,30 @@ video {
 }
 
 /* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
 body {
 	line-height: 1;
+	max-width: 1140px;
+	margin: auto;
+	font-family: 'Work Sans';
+	font-size: 14px;
+	background-color: rgba(255, 254, 248, 1);
 }
 
-ol,
-ul {
+ol, ul {
 	list-style: none;
 }
 
-blockquote,
-q {
+blockquote, q {
 	quotes: none;
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+blockquote:before, blockquote:after,
+q:before, q:after {
 	content: '';
 	content: none;
 }
@@ -134,24 +56,16 @@ table {
 	border-spacing: 0;
 }
 
-/** end reset css**/
-body {
-	max-width: 1140px;
-	margin: auto;
-	font-family: 'Work Sans';
-	font-size: 14px;
-	background-color: rgba(255, 254, 248, 1);
-	;
-}
+/** end reset css **/
 
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0;
 }
 
 section {
-	margin: 50px 0
+	margin: 50px 0;
 }
 
 h1 {
@@ -160,28 +74,26 @@ h1 {
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C
+	color: #B1663C;
 }
 
-h1>span {
+h1 > span {
 	font-family: 'Work Sans';
 	font-size: 10px;
 	letter-spacing: 0.1em;
-	;
 }
 
 h2 {
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
+	color: #1D6154;
 }
 
 nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
 }
 
 nav li {
@@ -206,7 +118,7 @@ li:hover {
 }
 
 #introduction figure {
-	flex: 1
+	flex: 1;
 }
 
 #introduction img {
@@ -216,7 +128,7 @@ li:hover {
 }
 
 #introduction article {
-	flex: 1
+	flex: 1;
 }
 
 #introduction h2 {
@@ -228,10 +140,8 @@ li:hover {
 }
 
 .filter-container {
-	margin-bottom: 20px;
 	text-align: center;
-	margin-top: 40px;
-	margin-bottom: 40px;
+	margin: 40px 0;
 }
 
 .filter-button {
@@ -244,59 +154,47 @@ li:hover {
 	cursor: pointer;
 }
 
-.filter-button:hover {
-	background-color: rgba(29, 97, 84, 1);
-	color: #ffffff;
-}
-
+.filter-button:hover,
 .filter-button.active {
 	background-color: rgba(29, 97, 84, 1);
 	color: #ffffff;
 }
 
 .portfolio-header {
-    margin-top: 130px;
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	margin: 130px 0 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 #editBtn {
-    display: none;
-    font-size: 15px;
-    color: #000000;
-    cursor: pointer;
-    position: absolute;
-    margin-left: 300px;
+	display: none;
+	font-size: 15px;
+	color: #000000;
+	cursor: pointer;
+	position: absolute;
+	margin-left: 300px;
 }
 
 #editBtn span {
-    margin-left: 5px;
+	margin-left: 5px;
 }
-
 
 .gallery {
 	width: 100%;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-column-gap: 20px;
-	grid-row-gap: 20px;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 20px;
 }
 
 .gallery img {
 	width: 100%;
-
 }
 
 #contact {
 	width: 50%;
 	margin: auto;
-}
-
-#contact>* {
 	text-align: center;
-
 }
 
 #contact h2 {
@@ -310,20 +208,19 @@ li:hover {
 	flex-direction: column;
 }
 
-#contact input {
-	height: 50px;
+#contact input,
+#contact textarea {
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-#contact label {
-	margin: 2em 0 1em 0;
+#contact input {
+	height: 50px;
 }
 
-#contact textarea {
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+#contact label {
+	margin: 2em 0 1em;
 }
 
 input[type="submit"] {
@@ -340,14 +237,14 @@ input[type="submit"] {
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 2em;
 }
 
 .footer {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	max-width: 100%;
+	width: 100%;
 	height: 50px;
 	background-color: #ffffff;
 	position: fixed;
@@ -357,14 +254,12 @@ footer nav ul {
 	font-size: 0.8em;
 }
 
-
 .Log {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
 	padding-top: 90px;
 	margin-bottom: 450px;
-
 	align-items: center;
 }
 
@@ -403,7 +298,7 @@ footer nav ul {
 #loginForm input {
 	height: 30px;
 	border: none;
-	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
 #authBtn a {
@@ -417,7 +312,6 @@ footer nav ul {
 
 /* Style pour la barre noire en mode édition */
 .edit-mode-bar {
-
 	width: 100%;
 	height: 50px;
 	background-color: black;
@@ -427,12 +321,9 @@ footer nav ul {
 	justify-content: center;
 }
 
-.edit-mode-bar span {
-	margin-left: 10px;
-	font-size: 18px;
-}
-
+.edit-mode-bar span,
 .edit-mode-bar i {
+	margin-left: 10px;
 	font-size: 18px;
 }
 
@@ -446,65 +337,56 @@ footer nav ul {
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
-
 }
 
 .modal-content {
 	background-color: #fcfcfc;
 	margin: 8% auto;
-	padding: 20px 0px;
+	padding: 20px 0;
 	text-align: center;
 	border: 1px solid #888;
 	max-width: 630px;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 	border-radius: 10px;
-
 }
 
 .modal-content h2 {
-	text-align: center;
-	margin-bottom: 30px;
-	margin-top: 30px;
+	margin: 30px 0;
 }
 
 #addPhotoBtn {
-	margin-top: 20px;
-	margin-bottom: 25px;
+	margin: 20px 0 25px;
 	padding: 10px 40px;
 	background-color: rgba(29, 97, 84, 1);
 	color: #ffffff;
 	border-radius: 60px;
 	cursor: pointer;
-
 }
 
 /* Trait gris décoratif */
 .decorative-line {
-	border: 1px;
 	width: 430px;
 	height: 1px;
 	background-color: rgba(179, 179, 179, 1);
-	margin: 20px auto;
-	/* Centrer le trait horizontalement */
-	margin-top: 50px;
+	margin: 50px auto 20px;
 }
 
-
-.close-modal {
+.close-modal,
+.back-btn {
 	color: #aaa;
-	float: right;
 	font-size: 28px;
 	font-weight: bold;
 	cursor: pointer;
+}
+
+.close-modal {
+	float: right;
 	padding-right: 25px;
 }
 
 .back-btn {
-	color: #aaa;
 	float: left;
-	font-size: 28px;
-	font-weight: bold;
-	cursor: pointer;
+	padding-left: 25px;
 }
 
 .close-modal:hover,
@@ -515,12 +397,11 @@ footer nav ul {
 	text-decoration: none;
 }
 
-/*miniature*/
+/* Miniature */
 .photo-item {
 	position: relative;
 	display: inline-block;
-	margin: 5px;
-	margin-top: 20px;
+	margin: 20px 5px 5px;
 }
 
 .photo-gallery {
@@ -528,15 +409,12 @@ footer nav ul {
 	grid-template-columns: repeat(5, 1fr);
 	max-width: 430px;
 	margin: auto;
-
-
 }
 
 .photo-item img {
 	height: 102px;
 	width: 76px;
 	object-fit: cover;
-
 	display: block;
 }
 
@@ -546,19 +424,86 @@ footer nav ul {
 	right: 5px;
 	color: #ffffff;
 	cursor: pointer;
-	font-size: 16px;
+	font-size: 11px;
+	background-color: rgb(0, 0, 0);
+	border-radius: 20%;
+	padding: 4px;
 }
-
-.photo-item .delete-icon:hover {
-	color: #000000;
-}
-
 
 #addPhotoForm {
-	margin-top: 50px;
+	margin: 30px auto 0;
 	display: flex;
 	flex-direction: column;
-	max-width: 300px;
-	margin: auto;
+	max-width: 400px;
 	gap: 10px;
+}
+
+#addPhotoForm input, select {
+	height: 30px;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#addPhotoForm input, select:focus {
+	outline: none;
+}
+
+#addPhotoForm label {
+	text-align: left;
+}
+
+.submitBtn {
+	margin: 20px 0 25px;
+	padding: 10px 70px;
+	background-color: rgba(29, 97, 84, 1);
+	color: #ffffff;
+	border-radius: 60px;
+	cursor: pointer;
+}
+
+.submitBtn:disabled {
+	background-color: gray;
+	cursor: not-allowed;
+}
+
+.photo-upload-container {
+	background-color: rgba(232, 241, 246, 1);
+	max-width: 400px;
+	height: 170px;
+	text-align: center;
+	border-radius: 5px;
+	position: relative;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.photo-upload-container i {
+	font-size: 70px;
+	color: #122f3f8b;
+	margin-top: 12px;
+	margin-bottom: 10px;
+}
+
+.upload-photo-btn {
+	margin: 5px auto;
+	padding: 10px;
+	background-color: #122f3f8b;
+	color: #ffffff;
+	border-radius: 60px;
+	cursor: pointer;
+	border: none;
+	width: 170px;
+}
+
+.photo-upload-container p {
+	color: #000000;
+	font-size: 12px;
+}
+
+.photo-upload-container img {
+    max-height: 100%;
+    border-radius: 5px;
+	object-fit:contain;
+
 }

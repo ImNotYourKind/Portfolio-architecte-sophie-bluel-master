@@ -15,11 +15,11 @@
 </head>
 
 <body>
-	
+
 	<div id="editModeBar" class="edit-mode-bar" style="display: none;">
-        <i class="fas fa-edit"></i>
-        <span>Mode édition</span>
-    </div>
+		<i class="fas fa-edit"></i>
+		<span>Mode édition</span>
+	</div>
 
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -52,9 +52,9 @@
 			<div class="portfolio-header">
 				<h2>Mes Projets</h2>
 				<div id="editBtn">
-                    <i class="fas fa-edit"></i>
-                    <span>Modifier</span>
-                </div>
+					<i class="fas fa-edit"></i>
+					<span>Modifier</span>
+				</div>
 			</div>
 			<div class="filter-container">
 				<!--
@@ -104,20 +104,29 @@
 
 		<div id="addPhotoSection" class="modal-content" style="display: none;">
 			<span class="back-btn">&larr;</span>
+			<span class="close-modal">&times;</span>
 			<h2>Ajout photo</h2>
+
+			<div id="photoUploadContainer" class="photo-upload-container">
+				<i class="fas fa-image"></i>
+				<button id="uploadPhotoBtn" class="upload-photo-btn">+ Ajouter photo</button>
+				<p>jpg, png : 4mo max</p>
+				<input type="file" id="photoFile" name="image" accept="image/*" style="display: none;" required>
+			</div>
+
 			<form id="addPhotoForm">
-				<label for="photoFile"></label>
-				<input type="file" id="photoFile" name="image" accept="image/*" required>
 				<label for="photoTitle">Titre</label>
 				<input type="text" id="photoTitle" name="title" required>
 				<label for="photoCategory">Catégorie</label>
 				<select id="photoCategory" name="category" required>
-					<option value="1">Objets</option>
-					<option value="2">Appartements</option>
-					<option value="3">Hotels & Restaurants</option>
+					<option value="1"></option>
+					<option value="2">Objets</option>
+					<option value="3">Appartements</option>
+					<option value="4">Hotels & Restaurants</option>
 				</select>
-				<button type="submit">Valider</button>
 			</form>
+			<div class="decorative-line"></div>
+			<button class="submitBtn" type="submit" disabled>Valider</button>
 		</div>
 	</div>
 
