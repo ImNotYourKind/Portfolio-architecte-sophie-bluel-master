@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
         token: localStorage.getItem('token')
     };
     
-    // Cache DOM elements
     const elements = {
         gallery: document.querySelector('.gallery'),
         filterContainer: document.querySelector('.filter-container'),
@@ -23,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         backBtn: document.querySelector('.back-btn')
     };
 
-    // Fetch photos
     const fetchPhotos = async () => {
         try {
             const response = await fetch('http://localhost:5678/api/works');
@@ -37,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Update gallery
     const updateGallery = () => {
         elements.gallery.innerHTML = state.photos
             .map(photo => `
@@ -48,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
             `).join('');
     };
 
-    // Update modal gallery
     const updateModalGallery = () => {
         if (elements.photoGallery) {
             elements.photoGallery.innerHTML = state.photos
@@ -61,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Update filters
     const updateFilters = () => {
         if (!state.token) {
             elements.filterContainer.innerHTML = '';
@@ -85,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Update Auth UI
     const updateAuthUI = () => {
         if (state.token) {
             elements.authBtn.innerHTML = '<a href="#">Logout</a>';
@@ -99,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Modal handling
     const openModal = () => {
         elements.modal.style.display = 'block';
         document.querySelector('.modal-content').style.display = 'block';
@@ -119,13 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <input type="file" id="photoFile" name="image" accept="image/*" style="display: none;" required>
         `;
         
-        // Reset form fields
         elements.photoFileInput.value = '';
         document.getElementById('photoCategory').value = '';
         document.getElementById('photoTitle').value = '';
         elements.submitBtn.disabled = true;
         
-        // Reset event listeners
         const newUploadBtn = document.getElementById('uploadPhotoBtn');
         const newFileInput = document.getElementById('photoFile');
         
@@ -135,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // File handling
     const handleFileSelection = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -150,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Check form validity
     const checkFormValidity = () => {
         const photoSelected = elements.photoFileInput.files[0];
         const titleFilled = document.getElementById('photoTitle').value.trim() !== '';
@@ -159,7 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.submitBtn.disabled = !(photoSelected && titleFilled && categorySelected);
     };
 
-    // Delete photo
     const deletePhoto = async (id) => {
         try {
             const response = await fetch(`http://localhost:5678/api/works/${id}`, {
@@ -176,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Event Listeners
     elements.filterContainer.addEventListener('click', (e) => {
         if (e.target.matches('.filter-button')) {
             const filter = e.target.dataset.filter;
@@ -219,11 +206,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     elements.photoFileInput.addEventListener('change', handleFileSelection);
 
-    // Nouveaux event listeners pour la validation du formulaire
     document.getElementById('photoTitle').addEventListener('input', checkFormValidity);
     document.getElementById('photoCategory').addEventListener('change', checkFormValidity);
 
-    // Submit button event listener
     elements.submitBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         
@@ -267,13 +252,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Modal close on outside click
     window.addEventListener('click', (e) => {
         if (e.target === elements.modal) {
             closeModal();
         }
     });
 
-    // Initialize
     fetchPhotos();
 });
