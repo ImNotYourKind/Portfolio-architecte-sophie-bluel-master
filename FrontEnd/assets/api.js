@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .forEach(btn => btn.classList.remove('active'));
             e.target.classList.add('active');
             
-            document.querySelectorAll('figure').forEach(fig => 
+            document.querySelector('.gallery').querySelectorAll('figure').forEach(fig => 
                 fig.style.display = (filter === 'all' || fig.classList.contains(`category-${filter}`)) 
                     ? 'block' 
                     : 'none'
