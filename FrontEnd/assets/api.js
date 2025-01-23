@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         backBtn: document.querySelector('.back-btn')
     };
 
+    // 1. Récupération des photos depuis l'API et affichage sur la page HTML
     const fetchPhotos = async () => {
         try {
             const response = await fetch('http://localhost:5678/api/works');
@@ -45,18 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `).join('');
     };
 
-    const updateModalGallery = () => {
-        if (elements.photoGallery) {
-            elements.photoGallery.innerHTML = state.photos
-                .map(photo => `
-                    <div class="photo-item">
-                        <img src="${photo.imageUrl}" alt="${photo.title}">
-                        <i class="fas fa-trash-alt delete-icon" data-id="${photo.id}"></i>
-                    </div>
-                `).join('');
-        }
-    };
-
+    // 2. Création et gestion des filtres
     const updateFilters = () => {
         if (!state.token) {
             elements.filterContainer.innerHTML = '';
@@ -80,6 +70,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    elements.filterContainer.addEventListener('click', (e) => {
+        if (e.target.matches('.filter-button')) {
+            const filter = e.target.dataset.filter;
+            document.querySelectorAll('.filter-button')
+                .forEach(btn => btn.classList.remove('active'));
+            e.target.classList.add('active');
+            
+            document.querySelector('.gallery').querySelectorAll('figure').forEach(fig => 
+                fig.style.display = (filter === 'all' || fig.classList.contains(`category-${filter}`)) 
+                    ? 'block' 
+                    : 'none'
+            );
+        }
+    });
+
+    // 3. Gestion de la page de connexion et des tokens
     const updateAuthUI = () => {
         if (state.token) {
             elements.authBtn.innerHTML = '<a href="#">Logout</a>';
@@ -93,6 +99,52 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    elements.authBtn.addEventListener('click', (e) => {
+        if (state.token) {
+            e.preventDefault();
+            localStorage.removeItem('token');
+            state.token = null;
+            window.location.reload();
+        }
+    });
+
+    // 4. Gestion de la modale pour afficher les photos en miniature et les supprimer
+    const updateModalGallery = () => {
+        if (elements.photoGallery) {
+            elements.photoGallery.innerHTML = state.photos
+                .map(photo => `
+                    <div class="photo-item">
+                        <img src="${photo.imageUrl}" alt="${photo.title}">
+                        <i class="fas fa-trash-alt delete-icon" data-id="${photo.id}"></i>
+                    </div>
+                `).join('');
+        }
+    };
+
+    const deletePhoto = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:5678/api/works/${id}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': `Bearer ${state.token}` }
+            });
+            if (response.ok) {
+                state.photos = state.photos.filter(photo => photo.id !== id);
+                updateGallery();
+                updateModalGallery();
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    elements.photoGallery.addEventListener('click', (e) => {
+        if (e.target.matches('.delete-icon')) {
+            const photoId = parseInt(e.target.dataset.id);
+            deletePhoto(photoId);
+        }
+    });
+
+    // 5. Gestion de la modale pour ajouter une photo, un titre et une catégorie, et fermeture des modales
     const openModal = () => {
         elements.modal.style.display = 'block';
         document.querySelector('.modal-content').style.display = 'block';
@@ -148,37 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.submitBtn.disabled = !(photoSelected && titleFilled && categorySelected);
     };
 
-    const deletePhoto = async (id) => {
-        try {
-            const response = await fetch(`http://localhost:5678/api/works/${id}`, {
-                method: 'DELETE',
-                headers: { 'Authorization': `Bearer ${state.token}` }
-            });
-            if (response.ok) {
-                state.photos = state.photos.filter(photo => photo.id !== id);
-                updateGallery();
-                updateModalGallery();
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
-
-    elements.filterContainer.addEventListener('click', (e) => {
-        if (e.target.matches('.filter-button')) {
-            const filter = e.target.dataset.filter;
-            document.querySelectorAll('.filter-button')
-                .forEach(btn => btn.classList.remove('active'));
-            e.target.classList.add('active');
-            
-            document.querySelector('.gallery').querySelectorAll('figure').forEach(fig => 
-                fig.style.display = (filter === 'all' || fig.classList.contains(`category-${filter}`)) 
-                    ? 'block' 
-                    : 'none'
-            );
-        }
-    });
-
     elements.editBtn.addEventListener('click', openModal);
 
     elements.closeModalButtons.forEach(btn => 
@@ -192,13 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.addPhotoBtn.addEventListener('click', () => {
         document.querySelector('.modal-content').style.display = 'none';
         elements.addPhotoSection.style.display = 'block';
-    });
-
-    elements.photoGallery.addEventListener('click', (e) => {
-        if (e.target.matches('.delete-icon')) {
-            const photoId = parseInt(e.target.dataset.id);
-            deletePhoto(photoId);
-        }
     });
 
     elements.uploadPhotoBtn.addEventListener('click', () => 
@@ -240,15 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             console.error('Error:', error);
             alert('Une erreur est survenue lors de l\'envoi de la photo');
-        }
-    });
-
-    elements.authBtn.addEventListener('click', (e) => {
-        if (state.token) {
-            e.preventDefault();
-            localStorage.removeItem('token');
-            state.token = null;
-            window.location.reload();
         }
     });
 
